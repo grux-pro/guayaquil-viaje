@@ -3,144 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecuador 2026 | La Odisea de Diego</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <title>Ecuador 2026 | La Bitácora de Diego</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1a759f;
-            --secondary: #34a0a4;
-            --accent: #f9c74f;
-            --dark: #184e77;
-            --text: #2d3436;
+            --dark: #0f172a;
+            --gold: #fbbf24;
+            --slate: #475569;
+            --accent: #0284c7;
             --white: #ffffff;
+            --bg: #f8fafc;
+            --card-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f4f8;
-            color: var(--text);
-            scroll-behavior: smooth;
+            font-family: 'Source Sans Pro', sans-serif;
+            margin: 0; padding: 0;
+            background-color: var(--bg);
+            color: var(--dark);
+            line-height: 1.8;
         }
 
         nav {
             background: var(--dark);
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
+            padding: 20px 0;
+            position: sticky; top: 0; z-index: 1000;
+            display: flex; justify-content: center; gap: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             flex-wrap: wrap;
         }
 
         nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.8em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: var(--white); text-decoration: none;
+            font-weight: 600; font-size: 0.8em;
+            text-transform: uppercase; letter-spacing: 2px;
+            transition: color 0.3s;
         }
 
+        nav a:hover { color: var(--gold); }
+
         header {
-            height: 70vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: var(--white);
             text-align: center;
-            padding: 0 20px;
+            padding: 120px 20px;
+            border-bottom: 10px solid var(--gold);
         }
 
         header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5em, 8vw, 4.5em); margin: 0; }
-        header p { font-size: 1.2em; letter-spacing: 4px; margin-top: 10px; }
+        header p { font-size: 1.1em; letter-spacing: 6px; text-transform: uppercase; margin-top: 20px; color: var(--gold); font-weight: 600; }
 
-        .content-section {
-            display: none;
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 20px;
-            animation: fadeIn 0.6s ease;
+        .section {
+            display: none; max-width: 1000px; margin: 60px auto; padding: 0 25px;
+            animation: fadeIn 0.8s ease forwards;
         }
 
-        .content-section.active { display: block; }
+        .section.active { display: block; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-        .story-card {
+        h2 { font-family: 'Playfair Display', serif; font-size: 2.8em; color: var(--dark); margin-bottom: 40px; border-bottom: 4px solid var(--gold); display: inline-block; }
+
+        .story-block {
             background: var(--white);
-            border-radius: 20px;
-            overflow: hidden;
-            margin-bottom: 40px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 50px;
+            border-left: 8px solid var(--accent);
         }
 
-        .story-img { height: 400px; background-size: cover; background-position: center; }
-        .story-content { padding: 40px; }
-        .story-content h2 { font-family: 'Playfair Display', serif; color: var(--dark); font-size: 2.2em; margin-top: 0; }
-        .story-content p { line-height: 1.8; color: #555; font-size: 1.1em; }
+        .day-title { font-family: 'Playfair Display', serif; font-size: 2em; color: var(--accent); margin-top: 0; font-style: italic; font-weight: 700; }
 
-        .day-narrative {
-            background: white;
-            padding: 0;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            overflow: hidden;
-            border-left: 5px solid var(--accent);
-        }
-
-        .day-img-inline {
-            width: 100%;
-            height: 250px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .day-text-content {
-            padding: 30px;
-        }
-
-        .day-narrative h3 { color: var(--primary); margin-top: 0; font-family: 'Playfair Display', serif; font-size: 1.6em; }
-
+        .tip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        
         .tip-card {
-            background: var(--dark);
-            color: white;
-            padding: 30px;
-            border-radius: 20px;
-            margin-bottom: 20px;
+            background: var(--white); padding: 40px; border-radius: 12px;
+            border-top: 6px solid var(--accent);
+            box-shadow: var(--card-shadow);
         }
 
-        .tip-card h3 { color: var(--accent); margin-top: 0; }
+        .tip-card h3 { font-family: 'Playfair Display', serif; color: var(--dark); font-size: 1.6em; margin-top: 0; margin-bottom: 15px; }
 
-        .btn {
-            background: var(--accent);
-            color: var(--dark);
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 30px;
-            display: inline-block;
-            font-weight: 700;
-            margin-top: 20px;
+        .hotel-btn {
+            background: var(--accent); color: var(--white);
+            padding: 15px 30px; text-decoration: none;
+            border-radius: 50px; font-weight: 700; display: inline-block;
+            margin-top: 20px; text-transform: uppercase; letter-spacing: 1px;
+            transition: 0.3s; box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
+        }
+
+        .hotel-btn:hover { background: var(--dark); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(15, 23, 42, 0.4); }
+
+        .main-btn {
+            background: var(--gold); color: var(--dark);
+            padding: 20px 45px; text-decoration: none;
+            border-radius: 50px; font-weight: 700; display: inline-block;
+            margin-top: 40px; text-transform: uppercase; letter-spacing: 2px;
             transition: 0.3s;
         }
 
-        .btn:hover { transform: scale(1.05); background: #f4b41a; }
+        .main-btn:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(251, 191, 36, 0.4); }
 
-        footer { text-align: center; padding: 60px 20px; background: var(--dark); color: white; margin-top: 50px; }
+        footer { text-align: center; padding: 80px 20px; background: var(--dark); color: var(--white); margin-top: 100px; border-top: 10px solid var(--gold); }
 
-        @media (max-width: 600px) {
-            .story-content { padding: 25px; }
-            header h1 { font-size: 2.5em; }
-            .day-img-inline { height: 180px; }
+        .highlight { font-weight: 700; color: var(--accent); }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2em; }
+            .story-block { padding: 30px; }
+            h2 { font-size: 2em; }
+            nav { gap: 15px; padding: 15px; }
         }
     </style>
 </head>
@@ -148,110 +121,101 @@
 
 <nav>
     <a href="#" onclick="showSection('inicio')">Inicio</a>
-    <a href="#" onclick="showSection('storytelling')">El Paso a Paso</a>
-    <a href="#" onclick="showSection('destinos')">Los Lugares</a>
-    <a href="#" onclick="showSection('tips')">Secretos Pro</a>
+    <a href="#" onclick="showSection('diario')">Bitácora</a>
+    <a href="#" onclick="showSection('hoteles')">Hoteles</a>
+    <a href="#" onclick="showSection('secretos')">Secretos Pro</a>
 </nav>
 
 <header>
-    <p>AGOSTO 2026</p>
-    <h1>La Odisea de Diego</h1>
     <p>Ruta del Spondylus & Guayas</p>
+    <h1>La Odisea de Diego</h1>
 </header>
 
-<section id="inicio" class="content-section active">
-    <div style="text-align: center; padding: 40px;">
-        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.8em;">Cierra los ojos, Diego...</h2>
-        <p style="max-width: 700px; margin: 20px auto; font-size: 1.3em; line-height: 1.6;">Estás a punto de aterrizar en una tierra donde el pacífico ruge con fuerza y la historia se saborea en cada esquina. Este no es un viaje de presupuesto bajo, es un viaje de <strong>experiencias de lujo con alma sencilla</strong>.</p>
-        <button onclick="showSection('storytelling')" class="btn">Vivir la historia ahora ➜</button>
+<section id="inicio" class="section active">
+    <div style="text-align: center;">
+        <h2>El Viaje Comienza en Tu Mente</h2>
+        <p style="font-size: 1.4em; color: var(--slate); max-width: 800px; margin: 0 auto; font-weight: 300;">
+            Diego, prepárate para una travesía donde el monitor se apaga y el horizonte se enciende. 
+            Este itinerario no es una lista de lugares; es la promesa de <span class="highlight">atardeceres de fuego</span>, 
+            el misticismo de santuarios sobre el mar y la conquista de una ciudad que te reta a subir 444 escalones para ver el mundo desde arriba.
+        </p>
+        <button onclick="showSection('diario')" class="main-btn">Empezar el Recorrido ➜</button>
     </div>
 </section>
 
-<section id="storytelling" class="content-section">
-    <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5em; text-align: center; margin-bottom: 40px;">Tu Diario de Viaje</h2>
+<section id="diario" class="section">
+    <h2>Bitácora de Inmersión</h2>
 
-    <div class="day-narrative">
-        <div class="day-img-inline" style="background-image: url('https://images.unsplash.com/photo-1596118182229-4d693f9c6a1e?auto=format&fit=crop&w=800&q=80');"></div>
-        <div class="day-text-content">
-            <h3>Día 1: El Despertar del Pacífico</h3>
-            <p>Aterrizas en Guayaquil, pero no te detienes. El aire húmedo te da la bienvenida mientras el bus avanza hacia el oeste. A medida que te acercas a Montañita, el verde se vuelve más intenso y el olor a sal lo inunda todo. Llegarás al <strong>Hotel Kundalini</strong> justo cuando el sol empieza a bajar. Imagínate caminando descalzo por la arena, viendo cómo los surfistas bailan sobre las olas mientras te tomas tu primer jugo de coco fresco. La noche en Montañita no se duerme, se vive entre tambores y fogatas.</p>
-        </div>
+    <div class="story-block">
+        <p class="day-title">Día 1: De la Urbe al Refugio Bohemio</p>
+        <p>Aterrizas en Guayaquil a las 9:10 AM. El aire húmedo y vibrante te da la bienvenida, pero tu brújula apunta al oeste. Tras un trayecto corto al terminal, el bus de la <span class="highlight">Cooperativa CLP</span> se convierte en tu nave hacia la costa. Durante tres horas, el verde de los manglares te susurra que la aventura ha comenzado.</p>
+        <p>Al llegar a <span class="highlight">Montañita</span>, el tiempo cambia. No hay relojes, solo mareas. Te instalas en el **Hotel Kundalini**, un oasis donde el lujo es caminar descalzo. Tu primera tarde: ver cómo el sol cae como una bola de oro sobre el Pacífico, mientras los surfistas bailan sobre las olas y el sonido de los tambores te da la bienvenida a tu nueva realidad.</p>
     </div>
 
-    <div class="day-narrative">
-        <div class="day-img-inline" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Santuario_Blanca_Estrella_de_la_Mar.jpg/800px-Santuario_Blanca_Estrella_de_la_Mar.jpg');"></div>
-        <div class="day-text-content">
-            <h3>Día 2: La Paz del Santuario</h3>
-            <p>Despiertas con el sonido del mar. Tomas un bus local, de esos que huelen a pueblo y aventura, y llegas a <strong>Olón</strong>. Es el contraste perfecto. Aquí el tiempo se detiene. Subes al Santuario sobre el peñón y te quedas mudo: el océano es infinito. Al bajar, te esperan las "cabañitas". Imagina un pescado recién salido del mar, asado a la brasa, con patacones crujientes. Es la felicidad en su estado más puro.</p>
-        </div>
+    <div class="story-block">
+        <p class="day-title">Día 2: Olón y el Abismo Azul</p>
+        <p>A cinco minutos de la intensidad está la paz de <span class="highlight">Olón</span>. Subir al **Santuario Blanca Estrella de la Mar** es obligatorio. Diego, imagina una iglesia-barco tallada en un peñón que se adentra en el océano. Desde su balcón, sentirás que estás en el fin del mundo. La vista es infinita. Al bajar, el ritual continúa con un almuerzo de pescado a la brasa en las cabañitas frente al mar; es el sabor de la sencillez y la frescura absoluta.</p>
     </div>
 
-    <div class="day-narrative">
-        <div class="day-img-inline" style="background-image: url('https://images.unsplash.com/photo-1568430462989-44163eb1752f?auto=format&fit=crop&w=800&q=80');"></div>
-        <div class="day-text-content">
-            <h3>Día 3: El Encuentro con Gigantes</h3>
-            <p>Hoy es el día cumbre. En Puerto López, el barco corta las olas hasta que, de repente, una explosión de agua: una ballena jorobada salta frente a ti. Es un momento que te quita el aliento. Por la tarde, la caminata hacia <strong>Los Frailes</strong> te hace sentir un explorador. No hay edificios, no hay ruido, solo arena blanca y agua turquesa protegida por acantilados. Es tu pedazo privado de paraíso.</p>
-        </div>
+    <div class="story-block">
+        <p class="day-title">Día 3: Gigantes y Paraísos Vírgenes</p>
+        <p>Hoy madrugamos hacia Puerto López. Agosto es mágico: es la temporada de las <span class="highlight">Ballenas Jorobadas</span>. Ver un salto de estos titanes de 40 toneladas frente a ti redefine tu escala en el universo. La tarde se reserva para la joya de la corona: **Playa Los Frailes**. Un santuario virgen de arena blanca y agua turquesa protegida por acantilados, donde el silencio es el único lenguaje que se habla.</p>
     </div>
 
-    <div class="day-narrative">
-        <div class="day-img-inline" style="background-image: url('https://images.unsplash.com/photo-1620803527964-b935406b2979?auto=format&fit=crop&w=800&q=80');"></div>
-        <div class="day-text-content">
-            <h3>Día 4: Los 444 Pasos a la Gloria</h3>
-            <p>Dejas la sal atrás para encontrarte con el río Guayas. Guayaquil te recibe con su Malecón vibrante. Al atardecer, empiezas a subir el <strong>Cerro Santa Ana</strong>. Paso a paso, la ciudad se abre ante ti. Las casas pintadas de azul, amarillo y rojo parecen un cuadro vivo. Al llegar al Faro, con la brisa del río refrescándote y las luces de la ciudad encendiéndose, sentirás que has conquistado Ecuador. Una cena en el barrio Las Peñas es el cierre perfecto para tu última noche.</p>
-        </div>
+    <div class="story-block">
+        <p class="day-title">Día 4: Los 444 Escalones al Cielo</p>
+        <p>Regresas a Guayaquil para el clímax del viaje. Te hospedas en **The Royalty Inn** y conquistas el <span class="highlight">Barrio Las Peñas</span>. Subir los 444 escalones del Cerro Santa Ana es un recorrido por el alma de la ciudad. Casas color pastel, cafés bohemios y galerías de arte te acompañan hasta el Faro. Al llegar a la cima, con el río Guayas a tus pies y las luces de la ciudad encendiéndose, entenderás por qué llaman a Guayaquil "La Perla del Pacífico".</p>
     </div>
 </section>
 
-<section id="destinos" class="content-section">
-    <div class="story-card">
-        <div class="story-img" style="background-image: url('https://images.unsplash.com/photo-1598132915312-d02d137f8f90?auto=format&fit=crop&w=800&q=80');"></div>
-        <div class="story-content">
-            <h2>Montañita & Olón</h2>
-            <p>Es la dualidad perfecta. La fiesta y el descanso, el surf y la meditación. Son pueblos que conservan esa esencia de "pueblo de pescadores" pero con una oferta gastronómica internacional que te sorprenderá. Aquí, el lujo es andar en sandalias todo el día.</p>
-            <a href="https://www.google.com/travel/search?q=Hotel%20Kundalini%20Monta%C3%B1ita&ts=CAEaIAoCGgASGhIUCgcI6g8QCBgFEgcI6g8QCBgIGAMyAggBKgkKBToDVVNEGgA&qs=CAEyJ0Noa0l1YUdTMjRXdDlON0JBUm9NTDJjdk1USm9ibk5xTVdzM0VBRUgA&ap=MAC6AQZwcmljZXM&ved=0CAAQ5JsGahgKEwjA27Sx1MOTAxUAAAAAHQAAAAAQiQE" target="_blank" class="btn" style="background: var(--primary); color: white;">Ver mi refugio ➜</a>
+<section id="hoteles" class="section">
+    <h2>Tus Refugios</h2>
+    <div class="tip-grid">
+        <div class="tip-card">
+            <h3>🏠 Hotel Kundalini (Costa)</h3>
+            <p><strong>Días:</strong> 5, 6 y 7 de Agosto.<br>
+            Ubicado frente al mar en Montañita. Es el equilibrio perfecto entre la energía del pueblo y la paz de la playa. Calificado con un sólido 4.7 por viajeros exigentes.</p>
+            <a href="https://www.google.com/travel/search?q=Hotel%20Kundalini%20Monta%C3%B1ita&ts=CAEaIAoCGgASGhIUCgcI6g8QCBgFEgcI6g8QCBgIGAMyAggBKgkKBToDVVNEGgA&qs=CAEyJ0Noa0l1YUdTMjRXdDlON0JBUm9NTDJjdk1USm9ibk5xTVdzM0VBRUgA&ap=MAC6AQZwcmljZXM&ved=0CAAQ5JsGahgKEwjA27Sx1MOTAxUAAAAAHQAAAAAQiQE" target="_blank" class="hotel-btn">Ver Hotel en la Playa ➜</a>
         </div>
-    </div>
 
-    <div class="story-card">
-        <div class="story-img" style="background-image: url('https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?auto=format&fit=crop&w=800&q=80');"></div>
-        <div class="story-content">
-            <h2>Guayaquil: La Perla</h2>
-            <p>Una ciudad cosmopolita que no olvida sus raíces. El Malecón 2000 es uno de los proyectos urbanos más exitosos de América Latina, y el Barrio Las Peñas es como viajar en el tiempo al Guayaquil del siglo XIX.</p>
-            <a href="https://www.google.com/travel/search?q=The%20Royalty%20Inn%20Guayaquil&ts=CAEaIAoCGgASGhIUCgcI6g8QCBgIEgcI6g8QCBgJGAEyAggBKgsKByABOgNVU0QaAA&qs=CAEyKENob0lyTHpXb3QyWmpKVGtBUm9OTDJjdk1URm5jblJmT0hwb1l4QUJIAA&ap=MAC6AQZwcmljZXM&ved=0CAAQ5JsGahgKEwiI34_n08OTAxUAAAAAHQAAAAAQggE" target="_blank" class="btn" style="background: var(--primary); color: white;">Ver mi base urbana ➜</a>
+        <div class="tip-card">
+            <h3>🏙️ The Royalty Inn (Ciudad)</h3>
+            <p><strong>Día:</strong> 8 de Agosto.<br>
+            Estratégicamente ubicado en Guayaquil. Confort de alta gama a precio low cost, ideal para explorar el centro y estar cerca del aeropuerto para tu vuelo matutino.</p>
+            <a href="https://www.google.com/travel/search?q=The%20Royalty%20Inn%20Guayaquil&ts=CAEaIAoCGgASGhIUCgcI6g8QCBgIEgcI6g8QCBgJGAEyAggBKgsKByABOgNVU0QaAA&qs=CAEyKENob0lyTHpXb3QyWmpKVGtBUm9OTDJjdk1URm5jblJmT0hwb1l4QUJIAA&ap=MAC6AQZwcmljZXM&ved=0CAAQ5JsGahgKEwiI34_n08OTAxUAAAAAHQAAAAAQggE" target="_blank" class="hotel-btn">Ver Hotel en la Ciudad ➜</a>
         </div>
     </div>
 </section>
 
-<section id="tips" class="content-section">
-    <h2 style="font-family: 'Playfair Display', serif; text-align: center; margin-bottom: 30px;">Secretos de Viajero Experto</h2>
+<section id="secretos" class="section">
+    <h2>Secretos del Viajero Experto</h2>
     
     <div class="tip-grid">
         <div class="tip-card">
-            <h3>🍋 El Mapa del Sabor</h3>
-            <p>Diego, el <strong>Encebollado</strong> es el alma de Guayaquil. Se come en la mañana (pruébalo en el Mercado Central). En la costa, busca el <strong>Corviche</strong> (masa de verde con pescado y maní). Si quieres enamorarte de verdad, pide un <strong>Arroz Marinero</strong> en Puerto López; es una explosión de mariscos que no olvidarás.</p>
+            <h3>🥘 El Ritual del Sabor</h3>
+            <p>Diego, no has estado en Guayaquil si no has comido un <span class="highlight">Encebollado</span> antes de las 11 AM en el Mercado Central. Es la cura para todo mal. En la costa, busca el <span class="highlight">Corviche</span> (masa de verde con maní y pescado). Pide siempre el ceviche con chifles y canguil; la mezcla de texturas te volará la cabeza.</p>
         </div>
 
-        <div class="tip-card" style="background: var(--secondary);">
-            <h3>🎒 El Kit del Explorador</h3>
-            <p>Lleva una chaqueta ligera o rompevientos para el tour de ballenas; en alta mar el viento de agosto es frío. No olvides repelente (los mosquitos son bravos al atardecer) y un protector solar potente; el sol ecuatorial no perdona, incluso si está nublado.</p>
+        <div class="tip-card">
+            <h3>🚌 Logística Táctica</h3>
+            <p>El Terminal Terrestre es tu mejor aliado. Busca siempre la ventanilla de **CLP** ($6.50 el pasaje). En Guayaquil, olvida los taxis de calle; usa **Uber o Cabify** para moverte seguro, con A/C y sin negociar precios. Lleva siempre billetes de $5 y $10; los de $20 ya son "oro" en los pueblos de playa.</p>
         </div>
 
-        <div class="tip-card" style="background: var(--primary);">
-            <h3>🚖 Logística de Pro</h3>
-            <p>Cuando llegues al Terminal Terrestre de Guayaquil, no tomes cualquier bus. La cooperativa <strong>CLP</strong> tiene unidades con aire acondicionado y asientos reclinables por solo $6.50. En Guayaquil, olvida los taxis de la calle; <strong>Uber o Cabify</strong> son tus mejores amigos para moverte seguro y a precio justo.</p>
+        <div class="tip-card">
+            <h3>🛡️ Seguridad Pilas</h3>
+            <p>Guayaquil es para los "pilas". Quédate en el Malecón 2000 y Puerto Santa Ana. No saques el celular de alta gama en el centro fuera de zonas vigiladas. En Montañita la vibra es relax, pero no descuides tus maletas en la arena. Agosto es el mes del viento: lleva un rompevientos ligero para el tour de ballenas.</p>
         </div>
     </div>
 </section>
 
 <footer>
-    <p>Buen viaje, <strong>Diego</strong>. Que el pacífico te traiga de vuelta renovado.</p>
-    <p>© 2026 | Tu Guía Personalizada</p>
+    <p>¡Buen viaje, <strong>Diego</strong>! Que el Pacífico te traiga de vuelta renovado.</p>
+    <p>© 2026 | Guía de Inmersión Pro - Ecuador</p>
 </footer>
 
 <script>
     function showSection(sectionId) {
-        const sections = document.querySelectorAll('.content-section');
+        const sections = document.querySelectorAll('.section');
         sections.forEach(s => s.classList.remove('active'));
         document.getElementById(sectionId).classList.add('active');
         window.scrollTo({top: 0, behavior: 'smooth'});
