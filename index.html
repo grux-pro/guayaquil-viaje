@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecuador 2026 | El Viaje de Diego</title>
+    <title>Ecuador 2026 | La Odisea de Diego</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -24,7 +24,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Navegación */
         nav {
             background: var(--dark);
             padding: 15px 0;
@@ -34,21 +33,21 @@
             display: flex;
             justify-content: center;
             gap: 20px;
+            flex-wrap: wrap;
         }
 
         nav a {
             color: white;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9em;
+            font-size: 0.8em;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        /* Hero Section */
         header {
-            height: 60vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+            height: 70vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
                         url('https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
@@ -58,91 +57,76 @@
             align-items: center;
             color: white;
             text-align: center;
+            padding: 0 20px;
         }
 
-        header h1 { font-family: 'Playfair Display', serif; font-size: 4em; margin: 0; }
-        header p { font-size: 1.2em; letter-spacing: 4px; }
+        header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5em, 8vw, 4.5em); margin: 0; }
+        header p { font-size: 1.2em; letter-spacing: 4px; margin-top: 10px; }
 
         .content-section {
             display: none;
             max-width: 1000px;
             margin: 40px auto;
             padding: 20px;
-            animation: fadeIn 0.5s ease;
+            animation: fadeIn 0.6s ease;
         }
 
         .content-section.active { display: block; }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Tarjetas de Historia (Marketing) */
         .story-card {
             background: var(--white);
             border-radius: 20px;
             overflow: hidden;
             margin-bottom: 40px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
         }
 
-        .story-img { height: 300px; background-size: cover; background-position: center; }
-        
+        .story-img { height: 400px; background-size: cover; background-position: center; }
         .story-content { padding: 40px; }
         .story-content h2 { font-family: 'Playfair Display', serif; color: var(--dark); font-size: 2.2em; margin-top: 0; }
         .story-content p { line-height: 1.8; color: #555; font-size: 1.1em; }
 
-        /* Itinerario */
-        .day-box {
-            border-left: 4px solid var(--secondary);
-            padding-left: 20px;
-            margin-bottom: 30px;
-            position: relative;
-        }
-
-        .day-box::before {
-            content: '';
-            position: absolute;
-            left: -10px;
-            top: 0;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--accent);
-        }
-
-        /* Tips */
-        .tip-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .tip-item {
-            background: var(--white);
-            padding: 25px;
+        .day-narrative {
+            background: white;
+            padding: 30px;
             border-radius: 15px;
-            border-bottom: 5px solid var(--accent);
+            margin-bottom: 25px;
+            border-left: 5px solid var(--accent);
         }
+
+        .day-narrative h3 { color: var(--primary); margin-top: 0; font-family: 'Playfair Display', serif; font-size: 1.6em; }
+
+        .tip-card {
+            background: var(--dark);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .tip-card h3 { color: var(--accent); margin-top: 0; }
 
         .btn {
-            background: var(--primary);
-            color: white;
-            padding: 12px 25px;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 15px 30px;
             text-decoration: none;
             border-radius: 30px;
             display: inline-block;
+            font-weight: 700;
             margin-top: 20px;
             transition: 0.3s;
         }
 
-        .btn:hover { background: var(--dark); }
+        .btn:hover { transform: scale(1.05); background: #f4b41a; }
 
-        footer { text-align: center; padding: 40px; background: var(--dark); color: white; margin-top: 50px; }
+        footer { text-align: center; padding: 60px 20px; background: var(--dark); color: white; margin-top: 50px; }
 
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
+            .story-content { padding: 25px; }
             header h1 { font-size: 2.5em; }
-            nav { gap: 10px; font-size: 0.7em; }
         }
     </style>
 </head>
@@ -150,106 +134,99 @@
 
 <nav>
     <a href="#" onclick="showSection('inicio')">Inicio</a>
-    <a href="#" onclick="showSection('historia')">Destinos</a>
-    <a href="#" onclick="showSection('itinerario')">Itinerario</a>
-    <a href="#" onclick="showSection('tips')">Tips</a>
+    <a href="#" onclick="showSection('storytelling')">El Paso a Paso</a>
+    <a href="#" onclick="showSection('destinos')">Los Lugares</a>
+    <a href="#" onclick="showSection('tips')">Secretos Pro</a>
 </nav>
 
 <header>
     <p>AGOSTO 2026</p>
-    <h1>Ecuador para Diego</h1>
-    <div style="margin-top: 20px;">
-        <span style="border: 1px solid white; padding: 5px 15px; border-radius: 20px;">Low Cost</span>
-        <span style="border: 1px solid white; padding: 5px 15px; border-radius: 20px; margin-left: 10px;">High Experience</span>
-    </div>
+    <h1>La Odisea de Diego</h1>
+    <p>Ruta del Spondylus & Guayas</p>
 </header>
 
 <section id="inicio" class="content-section active">
     <div style="text-align: center; padding: 40px;">
-        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5em;">Bienvenido a tu aventura, Diego.</h2>
-        <p style="max-width: 600px; margin: 20px auto; font-size: 1.2em;">Has elegido el corazón de la costa ecuatoriana. Prepárate para cinco días donde la historia colonial se funde con el salvajismo del Pacífico.</p>
-        <button onclick="showSection('historia')" class="btn">Empezar a soñar ➜</button>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.8em;">Cierra los ojos, Diego...</h2>
+        <p style="max-width: 700px; margin: 20px auto; font-size: 1.3em; line-height: 1.6;">Estás a punto de aterrizar en una tierra donde el pacífico ruge con fuerza y la historia se saborea en cada esquina. Este no es un viaje de presupuesto bajo, es un viaje de <strong>experiencias de lujo con alma sencilla</strong>.</p>
+        <button onclick="showSection('storytelling')" class="btn">Vivir la historia ahora ➜</button>
     </div>
 </section>
 
-<section id="historia" class="content-section">
-    <div class="story-card">
-        <div class="story-img" style="background-image: url('https://images.unsplash.com/photo-1582650625119-3a31f8fa2699?auto=format&fit=crop&w=800&q=80');"></div>
-        <div class="story-content">
-            <h2>Montañita: El Refugio de la Libertad</h2>
-            <p>Imagina un lugar donde el tiempo no se mide en horas, sino en mareas. Montañita nació como un secreto entre surfistas en los años 60 y hoy es el epicentro bohemio de Sudamérica. Es un pueblo de calles de tierra, techos de paja y una energía que te atrapa. Aquí, Diego, verás los atardeceres más encendidos del continente mientras el sonido de los tambores se mezcla con el golpe del mar. No es solo una playa, es un estado mental.</p>
-        </div>
+<section id="storytelling" class="content-section">
+    <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5em; text-align: center; margin-bottom: 40px;">Tu Diario de Viaje</h2>
+
+    <div class="day-narrative">
+        <h3>Día 1: El Despertar del Pacífico</h3>
+        <p>Aterrizas en Guayaquil, pero no te detienes. El aire húmedo te da la bienvenida mientras el bus avanza hacia el oeste. A medida que te acercas a Montañita, el verde se vuelve más intenso y el olor a sal lo inunda todo. Llegarás al <strong>Hotel Kundalini</strong> justo cuando el sol empieza a bajar. Imagínate caminando descalzo por la arena, viendo cómo los surfistas bailan sobre las olas mientras te tomas tu primer jugo de coco fresco. La noche en Montañita no se duerme, se vive entre tambores y fogatas.</p>
     </div>
 
-    <div class="story-card">
-        <div class="story-img" style="background-image: url('https://images.unsplash.com/photo-1568430462989-44163eb1752f?auto=format&fit=crop&w=800&q=80');"></div>
-        <div class="story-content">
-            <h2>Puerto López: La Danza de los Gigantes</h2>
-            <p>Agosto es mágico. Estarás allí en el momento exacto en que las <strong>ballenas jorobadas</strong> terminan su viaje de 7,000 km desde la Antártida para procrear en aguas ecuatorianas. Ver un salto de estos gigantes de 40 toneladas frente a ti es una experiencia que redefine tu escala en el mundo. Y luego, <strong>Los Frailes</strong>: un santuario de arena blanca y bosque seco donde la naturaleza permanece intacta, protegida por el Parque Machalilla. Es el paraíso que creías que ya no existía.</p>
-        </div>
+    <div class="day-narrative">
+        <h3>Día 2: La Paz del Santuario</h3>
+        <p>Despiertas con el sonido del mar. Tomas un bus local, de esos que huelen a pueblo y aventura, y llegas a <strong>Olón</strong>. Es el contraste perfecto. Aquí el tiempo se detiene. Subes al Santuario sobre el peñón y te quedas mudo: el océano es infinito. Al bajar, te esperan las "cabañitas". Imagina un pescado recién salido del mar, asado a la brasa, con patacones crujientes. Es la felicidad en su estado más puro.</p>
     </div>
 
-    <div class="story-card">
-        <div class="story-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Escalinatas_Cerro_Santa_Ana.jpg/640px-Escalinatas_Cerro_Santa_Ana.jpg');"></div>
-        <div class="story-content">
-            <h2>Guayaquil: La Resiliencia en Colores</h2>
-            <p>Guayaquil es una ciudad que ha sobrevivido a piratas, incendios y pestes, siempre levantándose más fuerte. Subir los <strong>444 escalones del Cerro Santa Ana</strong> no es solo ejercicio, es un recorrido por el origen de la ciudad. Cada escalón te cuenta una historia, cada casa de colores en Las Peñas te susurra versos de poetas que vivieron allí. Al llegar al Faro, con el río Guayas a tus pies, entenderás por qué la llaman "La Perla del Pacífico".</p>
-        </div>
+    <div class="day-narrative">
+        <h3>Día 3: El Encuentro con Gigantes</h3>
+        <p>Hoy es el día cumbre. En Puerto López, el barco corta las olas hasta que, de repente, una explosión de agua: una ballena jorobada salta frente a ti. Es un momento que te quita el aliento. Por la tarde, la caminata hacia <strong>Los Frailes</strong> te hace sentir un explorador. No hay edificios, no hay ruido, solo arena blanca y agua turquesa protegida por acantilados. Es tu pedazo privado de paraíso.</p>
+    </div>
+
+    <div class="day-narrative">
+        <h3>Día 4: Los 444 Pasos a la Gloria</h3>
+        <p>Dejas la sal atrás para encontrarte con el río Guayas. Guayaquil te recibe con su Malecón vibrante. Al atardecer, empiezas a subir el <strong>Cerro Santa Ana</strong>. Paso a paso, la ciudad se abre ante ti. Las casas pintadas de azul, amarillo y rojo parecen un cuadro vivo. Al llegar al Faro, con la brisa del río refrescándote y las luces de la ciudad encendiéndose, sentirás que has conquistado Ecuador. Una cena en el barrio Las Peñas es el cierre perfecto para tu última noche.</p>
     </div>
 </section>
 
-<section id="itinerario" class="content-section">
-    <h2 style="font-family: 'Playfair Display', serif;">La Ruta Maestra</h2>
-    
-    <div class="day-box">
-        <h3>5 - 7 de Agosto: Inmersión Total</h3>
-        <p><strong>Base:</strong> Montañita (Hotel Kundalini).<br>
-        Días de exploración en Olón, surf, gastronomía costera y el Santuario Blanca Estrella de la Mar.</p>
-        <a href="https://www.google.com/travel/search?q=Hotel%20Kundalini%20Monta%C3%B1ita&ts=CAEaIAoCGgASGhIUCgcI6g8QCBgFEgcI6g8QCBgIGAMyAggBKgkKBToDVVNEGgA&qs=CAEyJ0Noa0l1YUdTMjRXdDlON0JBUm9NTDJjdk1USm9ibk5xTVdzM0VBRUgA&ap=MAC6AQZwcmljZXM&ved=0CAAQ5JsGahgKEwjA27Sx1MOTAxUAAAAAHQAAAAAQiQE" style="color: var(--primary);">Link a tu refugio costero ➜</a>
+<section id="destinos" class="content-section">
+    <div class="story-card">
+        <div class="story-img" style="background-image: url('https://images.unsplash.com/photo-1598332822821-29a990a90943?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="story-content">
+            <h2>Montañita & Olón</h2>
+            <p>Es la dualidad perfecta. La fiesta y el descanso, el surf y la meditación. Son pueblos que conservan esa esencia de "pueblo de pescadores" pero con una oferta gastronómica internacional que te sorprenderá. Aquí, el lujo es andar en sandalias todo el día.</p>
+            <a href="https://www.google.com/travel/search?q=Hotel%20Kundalini%20Monta%C3%B1ita&ts=CAEaIAoCGgASGhIUCgcI6g8QCBgFEgcI6g8QCBgIGAMyAggBKgkKBToDVVNEGgA&qs=CAEyJ0Noa0l1YUdTMjRXdDlON0JBUm9NTDJjdk1USm9ibk5xTVdzM0VBRUgA&ap=MAC6AQZwcmljZXM&ved=0CAAQ5JsGahgKEwjA27Sx1MOTAxUAAAAAHQAAAAAQiQE" target="_blank" class="btn" style="background: var(--primary); color: white;">Ver mi refugio ➜</a>
+        </div>
     </div>
 
-    <div class="day-box">
-        <h3>8 de Agosto: El Regreso de la Perla</h3>
-        <p><strong>Base:</strong> Guayaquil (The Royalty Inn).<br>
-        Mañana de viaje, tarde de conquista urbana. Malecón 2000, cena de despedida con un Encebollado auténtico.</p>
-        <a href="https://www.google.com/travel/search?q=The%20Royalty%20Inn%20Guayaquil&ts=CAEaIAoCGgASGhIUCgcI6g8QCBgIEgcI6g8QCBgJGAEyAggBKgsKByABOgNVU0QaAA&qs=CAEyKENob0lyTHpXb3QyWmpKVGtBUm9OTDJjdk1URm5jblJmT0hwb1l4QUJIAA&ap=MAC6AQZwcmljZXM&ved=0CAAQ5JsGahgKEwiI34_n08OTAxUAAAAAHQAAAAAQggE" style="color: var(--primary);">Link a tu base en la ciudad ➜</a>
+    <div class="story-card">
+        <div class="story-img" style="background-image: url('https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="story-content">
+            <h2>Guayaquil: La Perla</h2>
+            <p>Una ciudad cosmopolita que no olvida sus raíces. El Malecón 2000 es uno de los proyectos urbanos más exitosos de América Latina, y el Barrio Las Peñas es como viajar en el tiempo al Guayaquil del siglo XIX.</p>
+            <a href="https://www.google.com/travel/search?q=The%20Royalty%20Inn%20Guayaquil&ts=CAEaIAoCGgASGhIUCgcI6g8QCBgIEgcI6g8QCBgJGAEyAggBKgsKByABOgNVU0QaAA&qs=CAEyKENob0lyTHpXb3QyWmpKVGtBUm9OTDJjdk1URm5jblJmT0hwb1l4QUJIAA&ap=MAC6AQZwcmljZXM&ved=0CAAQ5JsGahgKEwiI34_n08OTAxUAAAAAHQAAAAAQggE" target="_blank" class="btn" style="background: var(--primary); color: white;">Ver mi base urbana ➜</a>
+        </div>
     </div>
 </section>
 
 <section id="tips" class="content-section">
-    <h2 style="font-family: 'Playfair Display', serif;">Secretos de Viajero</h2>
-    <div class="tip-grid">
-        <div class="tip-item">
-            <h3>🍽️ ¿Qué comer?</h3>
-            <p>Diego, no te vayas sin probar un <strong>Arroz con Menestra y Carne Asada</strong> en Guayaquil, y un <strong>Ceviche de Camarón</strong> en la playa (el de Ecuador es único, se come con cuchara y lleva mucho jugo).</p>
-        </div>
-        <div class="tip-item">
-            <h3>🚌 Transporte Low Cost</h3>
-            <p>Los buses de la cooperativa CLP son los mejores. Salen del Terminal Terrestre (junto al aeropuerto). Costo: $6.50 por persona. ¡Barato y eficiente!</p>
-        </div>
-        <div class="tip-item">
-            <h3>🛡️ Seguridad</h3>
-            <p>En Guayaquil, usa **Uber o Cabify**. No camines con el celular en la mano en zonas no turísticas. En la playa, la vibra es relax, pero nunca dejes tus cosas solas en la arena.</p>
-        </div>
+    <h2 style="font-family: 'Playfair Display', serif; text-align: center; margin-bottom: 30px;">Secretos de Viajero Experto</h2>
+    
+    <div class="tip-card">
+        <h3>🍋 El Mapa del Sabor</h3>
+        <p>Diego, el <strong>Encebollado</strong> es el alma de Guayaquil. Se come en la mañana (pruébalo en el Mercado Central). En la costa, busca el <strong>Corviche</strong> (masa de verde con pescado y maní). Si quieres enamorarte de verdad, pide un <strong>Arroz Marinero</strong> en Puerto López; es una explosión de mariscos que no olvidarás.</p>
+    </div>
+
+    <div class="tip-card" style="background: var(--secondary);">
+        <h3>🎒 El Kit del Explorador</h3>
+        <p>Lleva una chaqueta ligera o rompevientos para el tour de ballenas; en alta mar el viento de agosto es frío. No olvides repelente (los mosquitos son bravos al atardecer) y un protector solar potente; el sol ecuatorial no perdona, incluso si está nublado.</p>
+    </div>
+
+    <div class="tip-card" style="background: var(--primary);">
+        <h3>🚖 Logística de Pro</h3>
+        <p>Cuando llegues al Terminal Terrestre de Guayaquil, no tomes cualquier bus. La cooperativa <strong>CLP</strong> tiene unidades con aire acondicionado y asientos reclinables por solo $6.50. En Guayaquil, olvida los taxis de la calle; <strong>Uber o Cabify</strong> son tus mejores amigos para moverte seguro y a precio justo.</p>
     </div>
 </section>
 
 <footer>
-    <p>Diseñado exclusivamente para el viaje de <strong>Diego</strong>.</p>
-    <p>© 2026 - Guía Pro de Ecuador</p>
+    <p>Buen viaje, <strong>Diego</strong>. Que el pacífico te traiga de vuelta renovado.</p>
+    <p>© 2026 | Tu Guía Personalizada</p>
 </footer>
 
 <script>
     function showSection(sectionId) {
-        // Ocultar todas las secciones
         const sections = document.querySelectorAll('.content-section');
         sections.forEach(s => s.classList.remove('active'));
-        
-        // Mostrar la seleccionada
         document.getElementById(sectionId).classList.add('active');
-        
-        // Hacer scroll al inicio
-        window.scrollTo(0, 0);
+        window.scrollTo({top: 0, behavior: 'smooth'});
     }
 </script>
 
