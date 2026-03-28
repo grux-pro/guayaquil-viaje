@@ -90,10 +90,23 @@
 
         .day-narrative {
             background: white;
-            padding: 30px;
+            padding: 0;
             border-radius: 15px;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
             border-left: 5px solid var(--accent);
+        }
+
+        .day-img-inline {
+            width: 100%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .day-text-content {
+            padding: 30px;
         }
 
         .day-narrative h3 { color: var(--primary); margin-top: 0; font-family: 'Playfair Display', serif; font-size: 1.6em; }
@@ -127,6 +140,7 @@
         @media (max-width: 600px) {
             .story-content { padding: 25px; }
             header h1 { font-size: 2.5em; }
+            .day-img-inline { height: 180px; }
         }
     </style>
 </head>
@@ -157,29 +171,41 @@
     <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5em; text-align: center; margin-bottom: 40px;">Tu Diario de Viaje</h2>
 
     <div class="day-narrative">
-        <h3>Día 1: El Despertar del Pacífico</h3>
-        <p>Aterrizas en Guayaquil, pero no te detienes. El aire húmedo te da la bienvenida mientras el bus avanza hacia el oeste. A medida que te acercas a Montañita, el verde se vuelve más intenso y el olor a sal lo inunda todo. Llegarás al <strong>Hotel Kundalini</strong> justo cuando el sol empieza a bajar. Imagínate caminando descalzo por la arena, viendo cómo los surfistas bailan sobre las olas mientras te tomas tu primer jugo de coco fresco. La noche en Montañita no se duerme, se vive entre tambores y fogatas.</p>
+        <div class="day-img-inline" style="background-image: url('https://images.unsplash.com/photo-1596118182229-4d693f9c6a1e?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="day-text-content">
+            <h3>Día 1: El Despertar del Pacífico</h3>
+            <p>Aterrizas en Guayaquil, pero no te detienes. El aire húmedo te da la bienvenida mientras el bus avanza hacia el oeste. A medida que te acercas a Montañita, el verde se vuelve más intenso y el olor a sal lo inunda todo. Llegarás al <strong>Hotel Kundalini</strong> justo cuando el sol empieza a bajar. Imagínate caminando descalzo por la arena, viendo cómo los surfistas bailan sobre las olas mientras te tomas tu primer jugo de coco fresco. La noche en Montañita no se duerme, se vive entre tambores y fogatas.</p>
+        </div>
     </div>
 
     <div class="day-narrative">
-        <h3>Día 2: La Paz del Santuario</h3>
-        <p>Despiertas con el sonido del mar. Tomas un bus local, de esos que huelen a pueblo y aventura, y llegas a <strong>Olón</strong>. Es el contraste perfecto. Aquí el tiempo se detiene. Subes al Santuario sobre el peñón y te quedas mudo: el océano es infinito. Al bajar, te esperan las "cabañitas". Imagina un pescado recién salido del mar, asado a la brasa, con patacones crujientes. Es la felicidad en su estado más puro.</p>
+        <div class="day-img-inline" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Santuario_Blanca_Estrella_de_la_Mar.jpg/800px-Santuario_Blanca_Estrella_de_la_Mar.jpg');"></div>
+        <div class="day-text-content">
+            <h3>Día 2: La Paz del Santuario</h3>
+            <p>Despiertas con el sonido del mar. Tomas un bus local, de esos que huelen a pueblo y aventura, y llegas a <strong>Olón</strong>. Es el contraste perfecto. Aquí el tiempo se detiene. Subes al Santuario sobre el peñón y te quedas mudo: el océano es infinito. Al bajar, te esperan las "cabañitas". Imagina un pescado recién salido del mar, asado a la brasa, con patacones crujientes. Es la felicidad en su estado más puro.</p>
+        </div>
     </div>
 
     <div class="day-narrative">
-        <h3>Día 3: El Encuentro con Gigantes</h3>
-        <p>Hoy es el día cumbre. En Puerto López, el barco corta las olas hasta que, de repente, una explosión de agua: una ballena jorobada salta frente a ti. Es un momento que te quita el aliento. Por la tarde, la caminata hacia <strong>Los Frailes</strong> te hace sentir un explorador. No hay edificios, no hay ruido, solo arena blanca y agua turquesa protegida por acantilados. Es tu pedazo privado de paraíso.</p>
+        <div class="day-img-inline" style="background-image: url('https://images.unsplash.com/photo-1568430462989-44163eb1752f?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="day-text-content">
+            <h3>Día 3: El Encuentro con Gigantes</h3>
+            <p>Hoy es el día cumbre. En Puerto López, el barco corta las olas hasta que, de repente, una explosión de agua: una ballena jorobada salta frente a ti. Es un momento que te quita el aliento. Por la tarde, la caminata hacia <strong>Los Frailes</strong> te hace sentir un explorador. No hay edificios, no hay ruido, solo arena blanca y agua turquesa protegida por acantilados. Es tu pedazo privado de paraíso.</p>
+        </div>
     </div>
 
     <div class="day-narrative">
-        <h3>Día 4: Los 444 Pasos a la Gloria</h3>
-        <p>Dejas la sal atrás para encontrarte con el río Guayas. Guayaquil te recibe con su Malecón vibrante. Al atardecer, empiezas a subir el <strong>Cerro Santa Ana</strong>. Paso a paso, la ciudad se abre ante ti. Las casas pintadas de azul, amarillo y rojo parecen un cuadro vivo. Al llegar al Faro, con la brisa del río refrescándote y las luces de la ciudad encendiéndose, sentirás que has conquistado Ecuador. Una cena en el barrio Las Peñas es el cierre perfecto para tu última noche.</p>
+        <div class="day-img-inline" style="background-image: url('https://images.unsplash.com/photo-1620803527964-b935406b2979?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="day-text-content">
+            <h3>Día 4: Los 444 Pasos a la Gloria</h3>
+            <p>Dejas la sal atrás para encontrarte con el río Guayas. Guayaquil te recibe con su Malecón vibrante. Al atardecer, empiezas a subir el <strong>Cerro Santa Ana</strong>. Paso a paso, la ciudad se abre ante ti. Las casas pintadas de azul, amarillo y rojo parecen un cuadro vivo. Al llegar al Faro, con la brisa del río refrescándote y las luces de la ciudad encendiéndose, sentirás que has conquistado Ecuador. Una cena en el barrio Las Peñas es el cierre perfecto para tu última noche.</p>
+        </div>
     </div>
 </section>
 
 <section id="destinos" class="content-section">
     <div class="story-card">
-        <div class="story-img" style="background-image: url('https://images.unsplash.com/photo-1598332822821-29a990a90943?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="story-img" style="background-image: url('https://images.unsplash.com/photo-1598132915312-d02d137f8f90?auto=format&fit=crop&w=800&q=80');"></div>
         <div class="story-content">
             <h2>Montañita & Olón</h2>
             <p>Es la dualidad perfecta. La fiesta y el descanso, el surf y la meditación. Son pueblos que conservan esa esencia de "pueblo de pescadores" pero con una oferta gastronómica internacional que te sorprenderá. Aquí, el lujo es andar en sandalias todo el día.</p>
@@ -200,19 +226,21 @@
 <section id="tips" class="content-section">
     <h2 style="font-family: 'Playfair Display', serif; text-align: center; margin-bottom: 30px;">Secretos de Viajero Experto</h2>
     
-    <div class="tip-card">
-        <h3>🍋 El Mapa del Sabor</h3>
-        <p>Diego, el <strong>Encebollado</strong> es el alma de Guayaquil. Se come en la mañana (pruébalo en el Mercado Central). En la costa, busca el <strong>Corviche</strong> (masa de verde con pescado y maní). Si quieres enamorarte de verdad, pide un <strong>Arroz Marinero</strong> en Puerto López; es una explosión de mariscos que no olvidarás.</p>
-    </div>
+    <div class="tip-grid">
+        <div class="tip-card">
+            <h3>🍋 El Mapa del Sabor</h3>
+            <p>Diego, el <strong>Encebollado</strong> es el alma de Guayaquil. Se come en la mañana (pruébalo en el Mercado Central). En la costa, busca el <strong>Corviche</strong> (masa de verde con pescado y maní). Si quieres enamorarte de verdad, pide un <strong>Arroz Marinero</strong> en Puerto López; es una explosión de mariscos que no olvidarás.</p>
+        </div>
 
-    <div class="tip-card" style="background: var(--secondary);">
-        <h3>🎒 El Kit del Explorador</h3>
-        <p>Lleva una chaqueta ligera o rompevientos para el tour de ballenas; en alta mar el viento de agosto es frío. No olvides repelente (los mosquitos son bravos al atardecer) y un protector solar potente; el sol ecuatorial no perdona, incluso si está nublado.</p>
-    </div>
+        <div class="tip-card" style="background: var(--secondary);">
+            <h3>🎒 El Kit del Explorador</h3>
+            <p>Lleva una chaqueta ligera o rompevientos para el tour de ballenas; en alta mar el viento de agosto es frío. No olvides repelente (los mosquitos son bravos al atardecer) y un protector solar potente; el sol ecuatorial no perdona, incluso si está nublado.</p>
+        </div>
 
-    <div class="tip-card" style="background: var(--primary);">
-        <h3>🚖 Logística de Pro</h3>
-        <p>Cuando llegues al Terminal Terrestre de Guayaquil, no tomes cualquier bus. La cooperativa <strong>CLP</strong> tiene unidades con aire acondicionado y asientos reclinables por solo $6.50. En Guayaquil, olvida los taxis de la calle; <strong>Uber o Cabify</strong> son tus mejores amigos para moverte seguro y a precio justo.</p>
+        <div class="tip-card" style="background: var(--primary);">
+            <h3>🚖 Logística de Pro</h3>
+            <p>Cuando llegues al Terminal Terrestre de Guayaquil, no tomes cualquier bus. La cooperativa <strong>CLP</strong> tiene unidades con aire acondicionado y asientos reclinables por solo $6.50. En Guayaquil, olvida los taxis de la calle; <strong>Uber o Cabify</strong> son tus mejores amigos para moverte seguro y a precio justo.</p>
+        </div>
     </div>
 </section>
 
